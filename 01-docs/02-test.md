@@ -18,7 +18,7 @@
 
 ## 1. Introduction to CI/CD
 
-**CI/CD is one of the core topics in DevOps learning. It connects development → testing → deployment in an automated way.**
+CI/CD is one of the core topics in DevOps learning. It connects development → testing → deployment in an automated way.
 
 ### Session Goals
 - Understand CI/CD fundamentals
@@ -27,27 +27,27 @@
 - Understand real-world workflows
 - Prepare for hands-on implementation
 
-**Study Note**: CI/CD bridges the gap between code written by developers and software delivered to customers, eliminating manual handoffs.
+**Note**: 
+CI/CD bridges the gap between code written by developers and software delivered to customers, eliminating manual handoffs.
 
 ---
 
 ## 2. What is CI/CD?
 
 ### Definition
-**CI/CD stands for:**
+CI/CD stands for:
 - CI → Continuous Integration
 - CD → Continuous Delivery / Continuous Deployment
 
-### Continuous Integration (CI)
+### ➤ Continuous Integration (CI)
 **Definition**: CI is the process of automatically integrating code changes into a shared repository with validation steps like testing and code analysis.
 
-**Includes:**
+**Includes**:
 - Testing
 - Code analysis
 - Quality checks
 
-**Ensures:**
-- Code is correct, secure, and ready
+**Ensures**: Code is correct, secure, and ready
 
 **Simple Meaning**: Every time a developer pushes code → system automatically checks if it is correct.
 
@@ -56,7 +56,7 @@
 Developer pushes feature branch → CI runs tests → Merge to main if successful
 ```
 
-### Continuous Delivery (CD)
+### ➤ Continuous Delivery (CD)
 **Definition**: CD is the process of automatically preparing and deploying application to different environments.
 
 **Ensures:**
