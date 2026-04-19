@@ -38,20 +38,19 @@ Code on laptop ≠ Available to users
 - Slow releases
 - Inconsistent environments
 
-### Solution
-
+**Solution**:
 CI/CD automates the entire pipeline:
 
 ```bash
 Code → Test → Scan → Deploy → User Access
 ```
 
-### Key Idea
+**Key Idea**:
 ```bash
 CI/CD = Automation of software delivery pipeline
 ```
 
-### Key Benefits
+**Key Benefits**:
 ```bash
 ✓ Faster releases (months → hours)
 ✓ Automated testing
@@ -70,7 +69,7 @@ A: To automate build, test, and deployment, ensuring fast and reliable software 
 
 ## 2. CI vs CD (Core Concepts)
 
-### Definition
+CI/CD stands for:
 ```bash
 CI = Continuous Integration  
 CD = Continuous Delivery / Deployment
@@ -79,7 +78,6 @@ CD = Continuous Delivery / Deployment
 ### Continuous Integration (CI)
 - Integrates code changes automatically
 - Runs validation steps:
-
 ```bash
 Build + Test + Code Analysis
 ```
@@ -89,7 +87,6 @@ Every code push is automatically verified.
 
 ### Continuous Delivery (CD)
 - Deploys application to environments
-
 ```bash
 Dev → Staging → Production
 ```
@@ -104,14 +101,13 @@ Tested code is automatically delivered to users.
 | CI    | Build + Test + Scan    | Ensure code quality |
 | CD    | Deploy to environments | Deliver to users    |
 
-### Analogy
-
+**Analogy**:
 ```bash
 CI = Chef prepares and checks food quality
 CD = Food is served to customer tables
 ```
 
-### Interview Q&A
+**Interview Q&A**
 ```bash
 Q: CI vs CD?
 A: CI validates code; CD deploys it to environments.
@@ -121,13 +117,12 @@ A: CI validates code; CD deploys it to environments.
 
 ## 3. Standard CI/CD Pipeline Steps
 
-### Pipeline Flow
+**Pipeline Flow**:
 ```bash
 Developer → VCS → CI/CD Tool → Customer
 ```
 
-### Core Steps
-
+**Core Steps**
 1. Unit Testing
 2. Static Code Analysis
 3. Code Quality & Security
@@ -135,10 +130,8 @@ Developer → VCS → CI/CD Tool → Customer
 5. Reporting
 6. Deployment
 
-### Key Insight
-```bash
+**Key Insight**:
 ⚠️ Steps vary by application, but pipeline always exists.
-```
 
 ---
 
@@ -217,7 +210,8 @@ result = a + b  # only 2 variables used
 | ESLint    | JavaScript | Formatting, best practices |
 | Pylint    | Python     | Style, unused vars         |
 
-**Analogy**: Like Grammar check before publishing article.
+**Analogy**:
+Like Grammar check before publishing article.
 
 **Interview Q&A**
 ```bash
@@ -246,7 +240,8 @@ Fix: Upgrade log4j to 2.17.1
 ```
 *Vulnerability detected → Deployment blocked ➤ Bad user experience*
 
-**Goal**: Prevent insecure deployments
+**Goal**:
+Prevent insecure deployments
 
 **Tools**
 
@@ -333,14 +328,16 @@ E2E Passed: 48/50 ✅
 Security: No critical issues ✅
 ```
 
-**Why Important?**
-- **Audit** + debugging + compliance
+**❓ Why Important?**
+```bash
+- Audit + debugging + compliance
+```
 
 **❓ Why needed?**
 ```bash
 Management may ask:
-• "How many tests passed?"
-• "Is code secure?"
+- "How many tests passed?"
+- "Is code secure?"
 ```
 
 **Tools**
@@ -353,30 +350,36 @@ Management may ask:
 
 ### 4.6 Deployment
 
-**Definition**: Making application accessible to users
+**Definition**:
+Making application accessible to users
 - Deploys application to environments
 - Makes app accessible to users
 
-**⚠️ Truth**: `Code on your laptop ≠ usable by customer`
+**⚠️ Truth**:
+`Code on your laptop ≠ usable by customer`
 
-**⚠️ Mandatory Step**: Without deployment → no user access
+**⚠️ Mandatory Step**:
+Without deployment → no user access
 
-**🌐 Deployment Targets**
+**Deployment Targets**:
+```bash
 - Cloud VMs
 - Containers
 - Kubernetes
 - Servers
+```
 
 **Interview Q&A**
 ```bash
 Q: Why not deploy directly to production?
 A: Risk reduction and validation.
-
+```
+```bash
 Q: Why not deploy directly to production?
 A:
-• Risk reduction
-• Cost optimization
-• Proper testing before release
+    - Risk reduction
+    - Cost optimization
+    - Proper testing before release
 ```
 
 ---
@@ -384,21 +387,19 @@ A:
 ## 5. Developer Workflow & Trigger Mechanism
 
 **❌ Myth vs Reality**
-
-| Myth                           | Reality                      |
-|--------------------------------|------------------------------|
-| Deploy once after full feature | Continuous small deployments |
-
+```bash
+- Myth: Deploy once after full feature 
+- Reality: Continuous small deployments
+```
 ### Modern Workflow
-
 ```bash
 Small Changes → Frequent Commits → Automated Pipeline
 ```
 
-**Workflow Example** (Jira + Git Workflow)
-
-Sprint – Jira Stories:
+### Workflow Example: (Jira + Git Workflow)
 ```bash
+Sprint – Jira Stories:
+
 Story #1: Version v1.0 → Commit → Pipeline runs ✓
 Story #2: Version v2.0 → Commit → Pipeline runs ✓
 ...
@@ -406,26 +407,29 @@ Final → Production Ready ✓
 ```
 
 ### 🔔 Trigger
-
 ```bash
 git push → pipeline runs automatically
 ```
 
 ### 📦 Storage: Version Control System (VCS)
 
-**Definition**: Store and manage code versions.
+**Definition**:
+Store and manage code versions.
 
 **VCS Tools**:
-* GitHub
-* GitLab
-* Bitbucket
+```bash
+- GitHub
+- GitLab
+- Bitbucket
+```
 
 ### 🔄 Workflow Overview
-
+```bash
 1. Developer writes code
 2. Pushes to VCS (GitHub/GitLab/Bitbucket)
 3. CI/CD pipeline triggers automatically
 4. All steps (test → scan → deploy) run automatically
+```
 
 ```bash
 Developer → Git Push → Pipeline Trigger → Execution
@@ -438,20 +442,21 @@ Developer → Git Push → Pipeline Trigger → Execution
 **Definition**:
 Jenkins is an **automation server** used to build CI/CD pipelines.
 
-**Core Role**: Orchestrator
+**Core Role**: `Orchestrator`
 
-⚠️ **Important Concept**
-
+⚠️ **Important Concept**:
 ```bash
 ❌ Jenkins does NOT do everything itself
 ✅ Jenkins CONNECTS and RUNS tools
 ```
 
-**Responsibilities**
+**Responsibilities**:
+```bash
 - Orchestrates pipeline stages
 - Connects different tools
 - Executes workflows
 - Automates entire CI/CD process
+```
 
 **Tools Integrated with Jenkins**
 
@@ -465,14 +470,12 @@ Jenkins is an **automation server** used to build CI/CD pipelines.
 | Deployment    | Docker/Kubernetes/EC2 |
 
 **Key Concept**
-
 ```bash
 ❗ Misconception: "Jenkins runs tests"
 ✅ Reality: Jenkins triggers tools (like JUnit) to execute tests
 ```
 
 **Analogy**
-
 ```bash
 Jenkins = Project Manager 👨‍💼
 ├── Developer = Worker
@@ -491,23 +494,24 @@ A: Automation server that orchestrates CI/CD pipelines.
 ## 7. Jenkins Architecture & Flow
 
 ### Architecture
-
 ```bash
 Developer → GitHub → Jenkins → Tools → Deployment
 ```
 
 ### Flow
-
+```bash
 1. Developer pushes code
 2. Jenkins detects change
 3. Pipeline triggered
 4. Stages executed
+```
 
 ### Trigger Mechanisms
-
-* Webhooks
-* Polling
-* Scheduled jobs
+```bash
+• Webhooks
+• Polling
+• Scheduled jobs
+```
 
 ---
 
@@ -546,10 +550,7 @@ pipeline {
 
 ### Pipeline Breakdown
 
-**agent any**
-```bash
-Run on any available node
-```
+- `agent any`: Run on any available node
 
 **Stages**
 
@@ -560,7 +561,6 @@ Run on any available node
 | `stage('Deploy')` | Deploys using Kubernetes        |
 
 ### Practical Flow
-
 ```bash
 Code Push → Jenkins → Build → Test → Deploy
 ```
@@ -577,7 +577,6 @@ Code Push → Jenkins → Build → Test → Deploy
 ```
 
 **Interview Q&A**
-
 ```bash
 Q: What is Jenkins Pipeline?
 A: CI/CD workflow defined as code (Jenkinsfile).
@@ -587,7 +586,7 @@ A: CI/CD workflow defined as code (Jenkinsfile).
 
 ## 9. Environment Promotion (Dev → Staging → Prod)
 
-**low**
+**Flow**
 ```bash
 Dev → Staging → Production
 ```
@@ -598,16 +597,19 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 ```
 
 **Key Principles**:
+```bash
 - Code moves progressively forward
 - Each environment adds more validation + stability
 - Code flows through multiple environments
 - Each environment increases in: Complexity, Stability, User exposure
+```
 
 ### Environments Overview
 
 #### 1️. Dev Environment
 
-**Purpose**: Used by developers for initial development and quick testing
+**Purpose**:
+Used by developers for initial development and quick testing
 
 **Characteristics**:
 - Simple setup
@@ -623,19 +625,20 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 
 #### 2️. Staging Environment
 
-**Purpose**: Simulates production for final testing before release
+- **Purpose**:
+Simulates production for final testing before release
 
-**Characteristics**:
-- Medium complexity
-- Mirrors production closely
-- Used by QA team/testers
+- **Characteristics**:
+    - Medium complexity
+    - Mirrors production closely
+    - Used by QA team/testers
 
-**Used For**:
-- Integration testing
-- QA testing
-- Bug validation
-- UAT (User Acceptance Testing)
-- Pre-release checks
+-**Used For**:
+    - Integration testing
+    - QA testing
+    - Bug validation
+    - UAT (User Acceptance Testing)
+    - Pre-release checks
 
 **Example**:
 ```bash
@@ -646,18 +649,19 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 
 #### 3️. Production Environment
 
-**Purpose**: Live application serving real customers
+- **Purpose**:
+Live application serving real customers
 
-**Characteristics**:
-- Full-scale system
-- High availability
-- Used by real users
-- Strict controls (approvals, monitoring, rollback)
+- **Characteristics**:
+    - Full-scale system
+    - High availability
+    - Used by real users
+    - Strict controls (approvals, monitoring, rollback)
 
-**Features**:
-- Auto-scaling enabled
-- Load balancing
-- Continuous monitoring & alerting
+- **Features**:
+    - Auto-scaling enabled
+    - Load balancing
+    - Continuous monitoring & alerting
 
 **Example**:
 ```bash
@@ -667,7 +671,7 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 • Monitoring (Prometheus, Grafana)
 ```
 
-**Infrastructure Comparison**
+#### Infrastructure Comparison
 
 | Environment | Infrastructure Setup                       |
 |-------------|--------------------------------------------|
@@ -675,7 +679,7 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 | Staging     | Few servers (production-like)              |
 | Production  | Large cluster (auto-scaled, load-balanced) |
 
-**Why NOT Use Production Everywhere❓**
+- **❓ Why NOT Use Production Everywhere?**
 
 | Reason    | Explanation                                   |
 |-----------|-----------------------------------------------|
@@ -683,21 +687,18 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 | ⚠️ Risk  | Bugs break live system, affect real users      |
 | 🐢 Speed | Slower for dev/testing, strict controls        |
 
-**Key Concept: Environment Promotion**
-
+- **Key Concept**: `Environment Promotion`
 ```bash
 Build once → Deploy everywhere
 ```
 
-```bash
-➤ Code promoted step-by-step: Dev → Staging → Production
+- **Code promoted step-by-step**: Dev → Staging → Production
 
-➤ Core Principles:
-• Code built ONCE
-• Same code deployed across environments
-• Confidence ↑ at each stage
-• Risk ↓ before production
-```
+- Core Principles:
+    - Code built ONCE
+    - Same code deployed across environments
+    - Confidence ↑ at each stage
+    - Risk ↓ before production
 
 **Benefits**
 - Early bug detection
@@ -707,14 +708,14 @@ Build once → Deploy everywhere
 **Real-World Analogy**
 ```bash
 🎓 Education System:
-Dev → Practice at home
-Staging → Mock exam
-Production → Final exam
+    Dev → Practice at home
+    Staging → Mock exam
+    Production → Final exam
 
 ➤ You don't go directly to final exam!
 ```
 
-**nterview Q&A**
+**Interview Q&A**
 ```bash
 Q: Why multiple environments?
 A: Reduce risk and ensure stability.
@@ -739,9 +740,11 @@ A: Reduce risk and ensure stability.
 ```
 
 #### ⚠️ Traditional Jenkins struggles with:
+```bash
 - Dynamic workloads
 - Microservices architecture
 - Container orchestration
+```
 
 ## ⚠️ Problems with Legacy CI/CD (Jenkins)
 
@@ -779,7 +782,8 @@ Manual tasks:
 - Requires DevOps effort
 - Not instant
 
-**Result**: Slow, inefficient scaling
+**Result**: 
+Slow, inefficient scaling
 
 ### 3️. No Scale-to-Zero 🚫
 
@@ -838,14 +842,14 @@ Jenkins designed for:
 
 ## 11. Modern CI/CD (Cloud-Native Approach)
 
-### Example Tools
-
-* GitHub Actions
-* Kubernetes
+**Example Tools**:
+- GitHub Actions
+- Kubernetes
 
 ### GitHub Actions
 
-**Definition**: GitHub Actions is an **event-driven CI/CD platform integrated with GitHub**.
+**Definition**: 
+GitHub Actions is an **event-driven CI/CD platform integrated with GitHub**.
 
 **Key Features**:
 - Native GitHub integration
@@ -868,30 +872,30 @@ Modern: Compute created only when needed ✅
 Start Container → Run Pipeline → Destroy Container
 ```
 
-### Step-by-Step Workflow
-
+**Step-by-Step Workflow**
+```bash
 1. Developer pushes code
 2. Event triggers workflow
 3. Container/Pod spins up
 4. Pipeline runs (build/test/deploy)
 5. Container destroyed ✅
+```
 
-### Result
+**Result**
 ```bash
 ✓ Zero idle cost
 ✓ Auto scaling
 ✓ Faster execution
 ```
 
-### Core Concept
+**Core Concept**
 ```bash
 Uses: Shared infrastructure + Ephemeral compute
 ➤ No always-on servers
 ➤ Pay only when pipeline runs
 ```
 
-### Analogy
-
+**Analogy**
 ```bash
 Like Uber 🚗:
 ├── No need to own car
@@ -911,13 +915,13 @@ Like Uber 🚗:
 | Faster execution    | Ephemeral containers   |
 | Native integrations | GitHub/GitLab built-in |
 
-### 🌐 Real-World Example (Kubernetes-Scale Projects)
+## Real-World Example (Kubernetes-Scale Projects)
 
 **Scenario**:
 ```bash
-Thousands of contributors
-Global collaboration
-Frequent code changes
+- Thousands of contributors
+- Global collaboration
+- Frequent code changes
 ```
 
 **Workflow**:
@@ -929,9 +933,7 @@ Frequent code changes
 ```
 
 **Key Benefit**: 
-```bash
 ✅ Zero compute when idle
-```
 
 ### Shared Resource Concept
 ```bash
@@ -944,6 +946,8 @@ Frequent code changes
 
 ## 12. Jenkins vs Modern CI/CD
 
+**Detailed Comparison**
+
 | Feature      | Jenkins        | GitHub Actions |
 | ------------ | -------------- | -------------- |
 | Setup        | Manual         | Built-in       |
@@ -954,14 +958,14 @@ Frequent code changes
 | Execution    | Always running | On-demand      |
 | Event-Driven | Limited        | Native         |
 
-### Insight
+**Insight**
 
 ```bash
 Jenkins = Powerful but heavy  
 Modern CI/CD = Lightweight + scalable
 ```
 
-### Key Modern CI/CD Features
+**Key Modern CI/CD Features**
 ```bash
 • Event-driven pipelines
 • Ephemeral infrastructure
@@ -974,25 +978,27 @@ Modern CI/CD = Lightweight + scalable
 
 ## 13. CI/CD Tool Ecosystem
 
-### Legacy
+**Legacy**
+```bash
+• Jenkins (self-hosted, powerful, complex)
+```
 
-* Jenkins  (self-hosted, powerful, complex)
+**Modern**
+```bash
+• GitHub Actions (GitHub-native)
+• GitLab CI/CD (GitLab-native)
+• CircleCI (cloud-first)
+• Travis CI (open source focus)
+```
 
-### Modern
-
-* GitHub Actions (GitHub-native)
-* GitLab CI/CD (GitLab-native)
-* CircleCI (cloud-first)
-* Travis CI (open source focus)
-
-### Insight
-
+**Important Insight**:
 ```bash
 Most CI/CD tools conceptually similar
 ➤ Main difference = syntax + ecosystem
 ```
 
-**Note**: Choose based on your VCS (GitHub → Actions, GitLab → CI/CD)
+**Note**: 
+Choose based on your VCS (GitHub → Actions, GitLab → CI/CD)
 
 ---
 
@@ -1000,8 +1006,7 @@ Most CI/CD tools conceptually similar
 
 ### Final Summary
 
-#### Key Points
-
+**Key Points**
 ```bash
 CI/CD = Automation of software delivery pipeline
 
@@ -1020,7 +1025,7 @@ Modern CI/CD = Cloud-native, scalable, cost-efficient
 └── Pay-per-use model
 ```
 
-#### Final Insight
+**Final Insight**
 
 ```bash
 ➤ Moving from:
@@ -1038,8 +1043,7 @@ Modern = Uber - pay per ride 🚗
 
 ### Next Step (Lab)
 
-#### Upcoming Hands-On Labs
-
+**Upcoming Hands-On Labs**
 ```bash
 1. Jenkins setup (Docker/local)
 2. Pipeline creation (Jenkinsfile)

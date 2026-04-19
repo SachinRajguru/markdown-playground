@@ -21,11 +21,13 @@
 CI/CD is one of the core topics in DevOps learning. It connects development → testing → deployment in an automated way.
 
 ### Session Goals
+```bash
 - Understand CI/CD fundamentals
 - Learn legacy vs modern CI/CD setups
 - Explore tools (Jenkins, GitHub Actions, etc.)
 - Understand real-world workflows
 - Prepare for hands-on implementation
+```
 
 **Note**: 
 CI/CD bridges the gap between code written by developers and software delivered to customers, eliminating manual handoffs.
@@ -34,59 +36,69 @@ CI/CD bridges the gap between code written by developers and software delivered 
 
 ## 2. What is CI/CD?
 
-### Definition
 CI/CD stands for:
+```bash
 - CI → Continuous Integration
 - CD → Continuous Delivery / Continuous Deployment
+```
 
-### ➤ Continuous Integration (CI)
-**Definition**: CI is the process of automatically integrating code changes into a shared repository with validation steps like testing and code analysis.
+### Continuous Integration (CI)
+
+**Definition**: 
+CI is the process of automatically integrating code changes into a shared repository with validation steps like testing and code analysis.
 
 **Includes**:
+```bash
 - Testing
 - Code analysis
 - Quality checks
+```
 
-**Ensures**: Code is correct, secure, and ready
+**Ensures**:
+Code is correct, secure, and ready
 
-**Simple Meaning**: Every time a developer pushes code → system automatically checks if it is correct.
+**Simple Meaning**: 
+Every time a developer pushes code → system automatically checks if it is correct.
 
 **Practical Example**:
-```
+```bash
 Developer pushes feature branch → CI runs tests → Merge to main if successful
 ```
 
-### ➤ Continuous Delivery (CD)
-**Definition**: CD is the process of automatically preparing and deploying application to different environments.
+### Continuous Delivery (CD)
+
+**Definition**: 
+CD is the process of automatically preparing and deploying application to different environments.
 
 **Ensures:**
 - App is delivered reliably
 - Customer can access it
 
-**Simple Meaning**: After code is tested → it is deployed to servers where users can access it.
+**Simple Meaning**: 
+After code is tested → it is deployed to servers where users can access it.
 
 ### CI vs CD (Core Difference)
 
-| Phase | Description       | Purpose          |
-|-------|-------------------|------------------|
-| **CI**  | Build + Test + Scan | Ensure code quality |
-| **CD**  | Deploy to environments | Deliver to users |
+| Phase   | Description            | Purpose             |
+|---------|------------------------|---------------------|
+| **CI**  | Build + Test + Scan    | Ensure code quality |
+| **CD**  | Deploy to environments | Deliver to users    |
 
 **Simple Formula**:
-```
+```bash
 CI = Build + Test + Scan
 CD = Deploy (Dev → Staging → Production)
 ```
 
-### Restaurant Analogy
-```
+**Restaurant Analogy**
+```bash
 CI = Chef prepares and checks food quality (taste, hygiene, presentation)
 CD = Food is served to customer tables (reliable delivery)
 ```
 
-### Textbook Summary
-- **CI automates testing and validation**
-- **CD automates deployment and delivery**
+**Textbook Summary**
+- **CI** automates testing and validation
+- **CD** automates deployment and delivery
 
 ### 🌍 Real-World Scenario
 **Situation**:
@@ -95,23 +107,30 @@ CD = Food is served to customer tables (reliable delivery)
 
 **❓ Problem**: How does code reach customer reliably?
 
-### ✅ Required Steps (Standard Flow)
+### ➤ Required Steps (Standard Flow)
 Every organization follows these core steps:
+```bash
 1. Unit Testing ✓
 2. Static Code Analysis ✓
 3. Code Quality & Security Scan ✓
 4. Automation / E2E Testing ✓
 5. Reporting ✓
-6. Deployment ➤
+6. Deployment ✓
+```
 
-### ⚠️ Important Insight
-**Steps vary by application type**:
+**⚠️ Important Insight**
+Steps vary by application type:
 - Web apps
 - Mobile apps
 - Government/secure apps
 
-**➤ But core pipeline always exists**
+**But core pipeline always exists**
 
+### ✅ Solution
+```bash
+➤ Automate everything using CI/CD
+CI/CD = Automation of entire delivery pipeline
+```
 ### ⚠️ Why Automation?
 
 | Without CI/CD      | With CI/CD       |
@@ -120,40 +139,33 @@ Every organization follows these core steps:
 | Manual testing     | Automated        |
 | Human errors       | Consistent execution |
 
-### ✓ Solution
-```bash
-➤ Automate everything using CI/CD**
-```
-
-**Key Idea**: 
-```bash
-CI/CD = Automation of entire delivery pipeline
-```
-
 ---
 
 ## 3. Standard CI/CD Pipeline Steps (Lab Guide)
 
-### Pipeline Flow
+**Pipeline Flow**
 ```bash
 Developer → VCS → CI/CD Tool → Customer
 ```
 
-### Steps Involved
+**Steps Involved**
+```bash
 1. Unit Testing
 2. Static Code Analysis
 3. Code Quality / Security Testing
 4. Automation Testing (E2E)
 5. Reporting
 6. Deployment
+```
 
 ---
 
 ## 4. Detailed Step-by-Step Explanation
 
-### 1. Unit Testing
+### 4.1 Unit Testing
 
-**Definition**: Testing individual function or block of code
+**Definition**: 
+Testing individual function or block of code
 
 **Example**:
 ```python
@@ -168,7 +180,7 @@ def test_add():
 ```
 
 **Concept**:
-```
+```python
 Testing only: add(2,3) → 5 ✅
 ```
 
@@ -183,19 +195,21 @@ Q: What is unit testing?
 A: Testing a single function independently (e.g., add(2,3)=5)
 ```
 
-**Lab Exercise**: Write 3 unit tests for a `multiply(a,b)` function.
+**Lab Exercise**:
+Write 3 unit tests for a `multiply(a,b)` function.
 
-### 2. Static Code Analysis
+### 4.2 Static Code Analysis
 
-**Definition**: Checking code without executing it.
+**Definition**: 
+Checking code without running it.
 
 **What it checks**:
-- Unused variables
 - Syntax errors
 - Formatting
 - Indentation
+- Unused variables
 
-**Example**
+**Example**:
 ```python
 # ❌ Bad practice - Static Analysis will flag this
 a = 1
@@ -212,15 +226,16 @@ result = a + b  # only 2 variables used
 - Memory wasted
 - Poor coding practice
 
-**Tools Comparison**
+**Tools**
 
-| Tool      | Language    | Purpose                    |
-|-----------|-------------|----------------------------|
-| SonarQube | All         | Code smells, bugs          |
-| ESLint    | JavaScript  | Formatting, best practices |
-| Pylint    | Python      | Style, unused vars         |
+| Tool      | Language   | Purpose                    |
+| --------- | ---------- | -------------------------- |
+| SonarQube | All        | Code smells, bugs          |
+| ESLint    | JavaScript | Formatting, best practices |
+| Pylint    | Python     | Style, unused vars         |
 
-**Analogy**: Like Grammar check before publishing article.
+**Analogy**:
+Like Grammar check before publishing article.
 
 **Interview Q&A**
 ```bash
@@ -228,11 +243,13 @@ Q: Why static analysis?
 A: Detects issues before runtime (memory, syntax, formatting)
 ```
 
-**Lab Exercise**: Install Pylint and analyze the bad code example above.
+**Lab Exercise**:
+Install `Pylint` and analyze the bad code example above.
 
-### 3. Code Quality & Security Testing
+### 4.3 Code Quality & Security Testing
 
-**Definition**: Ensures code is:
+**Definition**: 
+Ensures code is:
 - Secure
 - Reliable
 - Free from vulnerabilities
@@ -243,14 +260,15 @@ New Android update released → Vulnerability discovered → Hackers exploit it
 ```
 
 **Example Report**:
-```
+```bash
 Vulnerability: Log4Shell (CVE-2021-44228)
 Severity: CRITICAL ⚠️
 Fix: Upgrade log4j to 2.17.1
 ```
-*Vulnerability detected → Deployment blocked 👉 Bad user experience*
+*Vulnerability detected → Deployment blocked ➤ Bad user experience*
 
-**Goal**: Prevent insecure deployments
+**Goal**:
+Prevent insecure deployments
 
 **Tools**
 
@@ -267,11 +285,13 @@ Q: Why is vulnerability testing important?
 A: Prevents insecure applications from reaching users
 ```
 
-**Lab Exercise**: Scan a sample Java project with Snyk for Log4j vulnerabilities.
+**Lab Exercise**:
+Scan a sample Java project with Snyk for Log4j vulnerabilities.
 
-### 4. Automation / End-to-End Testing
+### 4.4 Automation / End-to-End Testing
 
-**Definition**: Testing entire application flow
+**Definition**:
+Testing entire application flow
 
 **Example Comparison**
 
@@ -316,11 +336,13 @@ Q: Unit vs Functional Testing?
 A: Unit = single function, Functional = end-to-end flow
 ```
 
-**Lab Exercise**: Write a Cypress test for a login → calculator → logout flow.
+**Lab Exercise**:
+Write a Cypress test for a login → calculator → logout flow.
 
-### 5. Reporting
+### 4.5 Reporting
 
-**Definition**: Storing results of pipeline execution
+**Definition**:
+Storing results of pipeline execution
 
 **Example Metrics**
 ```bash
@@ -329,8 +351,10 @@ E2E Passed: 48/50 ✅
 Security: No critical issues ✅
 ```
 
-**Why Important?**
-- **Audit** + debugging + compliance
+**❓ Why Important?**
+```bash
+- Audit + debugging + compliance
+```
 
 **❓ Why needed?**
 ```bash
@@ -347,34 +371,41 @@ Management may ask:
 | ExtentReports | Detailed HTML reports  |
 | ELK Stack     | Log aggregation        |
 
-**Lab Exercise**: Generate an Allure report from pytest results.
+**Lab Exercise**:
+Generate an Allure report from pytest results.
 
-### 6. Deployment
+### 4.6 Deployment
 
-**📘 Definition**: Making application accessible to users
+**Definition**: 
+Making application accessible to users
 - Deploys application to environments
 - Makes app accessible to users
 
-**⚠️ Truth**: `Code on your laptop ≠ usable by customer`
+**⚠️ Truth**: 
+`Code on your laptop ≠ usable by customer`
 
-**⚠️ Mandatory Step**: Without deployment → no user access
+**⚠️ Mandatory Step**: 
+Without deployment → no user access
 
-**🌐 Deployment Targets**
+**Deployment Targets**
+```bash
 - Cloud VMs
 - Containers
 - Kubernetes
 - Servers
+```
 
 **Interview Q&A**
 ```bash
 Q: Why not deploy directly to production?
 A:
-• Risk reduction
-• Cost optimization
-• Proper testing before release
+    - Risk reduction
+    - Cost optimization
+    - Proper testing before release
 ```
 
-**Lab Exercise**: Deploy a sample app to a Kubernetes dev namespace.
+**Lab Exercise**:
+Deploy a sample app to a Kubernetes dev namespace.
 
 ---
 
@@ -387,18 +418,18 @@ Small Changes → Frequent Commits → Automated Pipeline
 
 ### ❌ Myth vs Reality
 
-| Myth                        | Reality                      |
-|-----------------------------|------------------------------|
+| Myth                        | Reality                         |
+|-----------------------------|---------------------------------|
 | Deploy once after full feature | Continuous small deployments |
 
-### Workflow Example (Jira + Git Workflow)
-
-**Sprint – Jira Stories**:
+### Workflow Example: (Jira + Git Workflow)
 ```bash
-Story #1: Version v1.0 → Commit → Pipeline runs ✅
-Story #2: Version v2.0 → Commit → Pipeline runs ✅
+Sprint – Jira Stories:
+
+Story #1: Version v1.0 → Commit → Pipeline runs ✓
+Story #2: Version v2.0 → Commit → Pipeline runs ✓
 ...
-Final → Production Ready 🚀
+Final → Production Ready ✓
 ```
 
 ### 🔔 Trigger Mechanism
@@ -408,16 +439,20 @@ Git Push → Automatically triggers CI/CD
 
 ### 📦 Storage: Version Control System (VCS)
 
-**Definition**: Store and manage code versions.
+**Definition**:
+Store and manage code versions.
 
 **Tools**:
+```bash
 - GitHub
 - GitLab
 - Bitbucket
+```
 
 ### CI/CD Pipeline
 
-**Definition**: Automated sequence of steps executed after code push.
+**Definition**:
+Automated sequence of steps executed after code push.
 
 ### 🔄 Workflow Overview
 ```bash
@@ -439,20 +474,24 @@ Developer → GitHub → Jenkins → Tools → Deployment
 ```
 
 **Explanation**:
+```bash
 1. Developer writes code
 2. Pushes to GitHub
 3. Jenkins detects changes
 4. Triggers pipeline
 5. Executes tools (build, test, deploy)
+```
 
 ### 🔄 CI/CD Flow (Step-by-Step)
 
 **Trigger Mechanism**
+```bash
 Jenkins continuously:
 - Watches GitHub repository
 - Triggers pipeline on:
   - Commit
   - Pull Request
+```
 
 **Execution Flow**
 ```bash
@@ -463,9 +502,9 @@ Jenkins continuously:
 ```
 
 ### 📌 What is Jenkins?
-**Jenkins is an automation server used to build CI/CD pipelines.**
+Jenkins is an automation server used to build CI/CD pipelines.
 
-### Core Role: Orchestrator
+**Core Role**: `Orchestrator`
 
 **Important Concept**:
 ```bash
@@ -474,12 +513,14 @@ Jenkins continuously:
 ```
 
 **Responsibilities**:
+```bash
 - Orchestrates pipeline stages
 - Connects different tools
 - Executes workflow
 - Automates entire CI/CD process
+```
 
-### Tools Integrated with Jenkins
+**Tools Integrated with Jenkins**
 
 | Stage         | Tool                  |
 |---------------|-----------------------|
@@ -490,13 +531,13 @@ Jenkins continuously:
 | Reporting     | ALM Tools             |
 | Deployment    | Docker/Kubernetes/EC2 |
 
-### Key Concept (VERY IMPORTANT)
+**Key Concept** (VERY IMPORTANT)
 ```bash
 ❗ Misconception: "Jenkins runs tests"
 ✅ Reality: Jenkins triggers tools (like JUnit) to execute tests
 ```
 
-### Real-World Analogy
+**Real-World Analogy**
 ```bash
 Jenkins = Project Manager 👨‍💼
 ├── Developer = Worker
@@ -599,22 +640,25 @@ A: Jenkins acts as an orchestrator that connects and automates different tools
 
 ## 7. Environment Promotion
 
-### CI/CD Flow with Environments
-```
+**CI/CD Flow with Environments**
+```bash
 Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTION)
 ```
 
 **Key Principles**:
+```bash
 - Code moves progressively forward
 - Each environment adds more validation + stability
 - Code flows through multiple environments
 - Each environment increases in: Complexity, Stability, User exposure
+```
 
 ### Environments Overview
 
 #### 1️. Dev Environment
 
-**Purpose**: Used by developers for initial development and quick testing
+**Purpose**:
+Used by developers for initial development and quick testing
 
 **Characteristics**:
 - Simple setup
@@ -630,19 +674,20 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 
 #### 2️. Staging Environment
 
-**Purpose**: Simulates production for final testing before release
+- **Purpose**:
+Simulates production for final testing before release
 
-**Characteristics**:
-- Medium complexity
-- Mirrors production closely
-- Used by QA team/testers
+- **Characteristics**:
+    - Medium complexity
+    - Mirrors production closely
+    - Used by QA team/testers
 
-**Used For**:
-- Integration testing
-- QA testing
-- Bug validation
-- UAT (User Acceptance Testing)
-- Pre-release checks
+-**Used For**:
+    - Integration testing
+    - QA testing
+    - Bug validation
+    - UAT (User Acceptance Testing)
+    - Pre-release checks
 
 **Example**:
 ```bash
@@ -653,18 +698,19 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 
 #### 3️. Production Environment
 
-**Purpose**: Live application serving real customers
+- **Purpose**:
+Live application serving real customers
 
-**Characteristics**:
-- Full-scale system
-- High availability
-- Used by real users
-- Strict controls (approvals, monitoring, rollback)
+- **Characteristics**:
+    - Full-scale system
+    - High availability
+    - Used by real users
+    - Strict controls (approvals, monitoring, rollback)
 
-**Features**:
-- Auto-scaling enabled
-- Load balancing
-- Continuous monitoring & alerting
+- **Features**:
+    - Auto-scaling enabled
+    - Load balancing
+    - Continuous monitoring & alerting
 
 **Example**:
 ```bash
@@ -674,7 +720,7 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 • Monitoring (Prometheus, Grafana)
 ```
 
-### Infrastructure Comparison
+#### Infrastructure Comparison
 
 | Environment | Infrastructure Setup                       |
 |-------------|--------------------------------------------|
@@ -682,7 +728,7 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 | Staging     | Few servers (production-like)              |
 | Production  | Large cluster (auto-scaled, load-balanced) |
 
-### ❓ Why NOT Use Production Everywhere?
+- **❓ Why NOT Use Production Everywhere?**
 
 | Reason    | Explanation                                   |
 |-----------|-----------------------------------------------|
@@ -690,33 +736,30 @@ Developer → GitHub → Jenkins → Environments (DEV → STAGING → PRODUCTIO
 | ⚠️ Risk  | Bugs break live system, affect real users      |
 | 🐢 Speed | Slower for dev/testing, strict controls        |
 
-### Key Concept: Environment Promotion
-
+- **Key Concept**: `Environment Promotion`
 ```bash
 Build once → Deploy everywhere
 ```
 
-```bash
-➤ Code promoted step-by-step: Dev → Staging → Production
+- **Code promoted step-by-step**: Dev → Staging → Production
 
-➤ Core Principles:
-• Code built ONCE
-• Same code deployed across environments
-• Confidence ↑ at each stage
-• Risk ↓ before production
-```
+- Core Principles:
+    - Code built ONCE
+    - Same code deployed across environments
+    - Confidence ↑ at each stage
+    - Risk ↓ before production
 
-### Benefits
+**Benefits**
 - Early bug detection
 - Safer releases
 - Higher confidence in deployments
 
-### Real-World Analogy
+**Real-World Analogy**
 ```bash
 🎓 Education System:
-Dev → Practice at home
-Staging → Mock exam
-Production → Final exam
+    Dev → Practice at home
+    Staging → Mock exam
+    Production → Final exam
 
 ➤ You don't go directly to final exam!
 ```
@@ -737,9 +780,11 @@ Production → Final exam
 ```
 
 **⚠️ Traditional Jenkins struggles with**:
+```bash
 - Dynamic workloads
 - Microservices architecture
 - Container orchestration
+```
 
 ## ⚠️ Problems with Legacy CI/CD (Jenkins)
 
@@ -777,7 +822,8 @@ Manual tasks:
 - Requires DevOps effort
 - Not instant
 
-**Result**: Slow, inefficient scaling
+**Result**: 
+Slow, inefficient scaling
 
 ### 3️. No Scale-to-Zero 🚫
 
@@ -799,14 +845,14 @@ Even when:
 ➤ Operational complexity + frequent maintenance
 ```
 
-### 💸 Real-World Scenario
+### Real-World Scenario
 ```bash
 Organization: 30–40 VMs running Jenkins
 During nights 🌙 / weekends 🛌 / no deployments
 ➤ Still paying FULL cost!
 ```
 
-### Analogy (Very Important)
+### Analogy
 ```bash
 Legacy Jenkins = Office always open 💡
 ├── Lights always ON
@@ -814,7 +860,7 @@ Legacy Jenkins = Office always open 💡
 └── Even when no work happening
 ```
 
-**Core Limitation**: 
+### Core Limitation: 
 ```bash
 ❌ Cannot scale down to zero
 ```
@@ -836,15 +882,16 @@ Jenkins designed for:
 
 ## 9. Modern CI/CD (Cloud Native)
 
-### 🧰 Example Stack
+**🧰 Example Stack**
 ```bash
-• Kubernetes
-• GitHub Actions
+- Kubernetes
+- GitHub Actions
 ```
 
 ### GitHub Actions
 
-**Definition**: GitHub Actions is an **event-driven CI/CD platform integrated with GitHub**.
+**Definition**: 
+GitHub Actions is an **event-driven CI/CD platform integrated with GitHub**.
 
 **Key Features**:
 - Native GitHub integration
@@ -910,13 +957,13 @@ Like Uber 🚗:
 | Faster execution    | Ephemeral containers   |
 | Native integrations | GitHub/GitLab built-in |
 
-### 🌐 Real-World Example (Kubernetes-Scale Projects)
+## Real-World Example (Kubernetes-Scale Projects)
 
 **Scenario**:
 ```bash
-Thousands of contributors
-Global collaboration
-Frequent code changes
+- Thousands of contributors
+- Global collaboration
+- Frequent code changes
 ```
 
 **Workflow**:
@@ -928,9 +975,7 @@ Frequent code changes
 ```
 
 **Key Benefit**:
-```bash
 ✅ Zero compute when idle
-```
 
 ### 🔄 Shared Resource Concept
 ```bash
@@ -974,12 +1019,12 @@ GitHub Actions → Lightweight & scalable ⚡
 
 ## 10. CI/CD Tool Ecosystem
 
-### Legacy
+**Legacy**
 ```bash
 • Jenkins (self-hosted, powerful, complex)
 ```
 
-### Modern Tools
+**Modern**
 ```bash
 • GitHub Actions (GitHub-native)
 • GitLab CI/CD (GitLab-native)
@@ -993,13 +1038,14 @@ Most CI/CD tools conceptually similar
 ➤ Main difference = syntax + ecosystem
 ```
 
-**Note**: Choose based on your VCS (GitHub → Actions, GitLab → CI/CD)
+**Note**:
+Choose based on your VCS (GitHub → Actions, GitLab → CI/CD)
 
 ---
 
 ## 11. Lab Preparation (Next Step)
 
-### Upcoming Hands-On Labs
+**Upcoming Hands-On Labs**
 ```bash
 1. Jenkins setup (Docker/local)
 2. Pipeline creation (Jenkinsfile)
@@ -1022,8 +1068,7 @@ Most CI/CD tools conceptually similar
 
 ## 12. Final Summary
 
-### 🔑 Key Takeaways
-
+**🔑 Key Takeaways**
 ```bash
 CI/CD = Automation of software delivery pipeline
 
@@ -1042,8 +1087,7 @@ Modern CI/CD = Cloud-native, scalable, cost-efficient
 └── Pay-per-use model
 ```
 
-### Final Insight: Industry Shift
-
+**Final Insight: Industry Shift**
 ```bash
 ➤ Moving from:
 Static Infrastructure (Jenkins) 🏗️
@@ -1054,8 +1098,8 @@ Dynamic, On-Demand Systems (Cloud CI/CD) ⚡
 
 **Remember**: 
 ```bash
-Legacy = Office always open 💰
-Modern = Uber - pay per ride 🚗
+- Legacy = Office always open 💰
+- Modern = Uber - pay per ride 🚗
 ```
 
 ---
