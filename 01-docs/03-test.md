@@ -27,6 +27,8 @@ Study Guide + Practical Guide + Lab Guide + Technical Guide
 - [19. Interview Questions and Answers](#19-interview-questions-and-answers)
 - [20. Key Takeaways](#20-key-takeaways)
 
+---
+
 ## 1. Introduction
 
 This project is the **first practical Jenkins pipeline** used to validate whether:
@@ -70,6 +72,8 @@ If Node version is returned successfully:
 * Jenkins can run jobs inside containers
 * Docker permissions are correct
 * Plugin configuration is correct
+
+---
 
 ## 3. Project Architecture
 
@@ -166,8 +170,6 @@ sudo usermod -aG docker jenkins
 sudo systemctl restart docker
 ```
 
----
-
 ## Validate Docker Access
 
 Switch to Jenkins user:
@@ -234,7 +236,7 @@ pipeline {
 
 ## 8. Understanding the Pipeline Components
 
-### pipeline {}
+### `pipeline {}`
 
 Defines entire Jenkins pipeline.
 
@@ -269,7 +271,7 @@ node:20-alpine
 * Fast pull
 * Includes Node installed
 
-### stages
+### `stages`
 
 ```groovy
 stages {
@@ -281,7 +283,7 @@ Stages = logical phases.
 
 This pipeline has only one.
 
-### stage
+### `stage`
 
 ```groovy
 stage('Test')
@@ -293,7 +295,7 @@ Purpose:
 
 Verify Node exists inside container.
 
-### steps
+### `steps`
 
 ```groovy
 steps {
@@ -309,7 +311,7 @@ Commands executed.
 
 ### Step 1
 
-Go to Jenkins:
+- Go to Jenkins:
 
 ```text
 http://your-server:8080
@@ -317,17 +319,17 @@ http://your-server:8080
 
 ### Step 2
 
-Create New Item
+- Create New Item
 
 ### Step 3
 
-Select:
+- Select:
 
 ```text
 Pipeline
 ```
 
-Name:
+- Name:
 
 ```text
 first-jenkins-job
@@ -335,7 +337,7 @@ first-jenkins-job
 
 ### Step 4
 
-Choose:
+- Choose:
 
 ```text
 Pipeline script from SCM
@@ -343,31 +345,29 @@ Pipeline script from SCM
 
 ### Step 5
 
-Repository:
+- Repository:
 
 ```text
 https://github.com/yourrepo/jenkins-guide
 ```
 
-Branch:
+- Branch:
 
 ```text
 main
 ```
 
-Script Path:
+- Script Path:
 
 ```text
 01-my-first-pipeline/Jenkinsfile
 ```
 
-Save.
-
----
+**Save**.
 
 ## 10. Execute Pipeline
 
-Click:
+- Click:
 
 ```text
 Build Now
@@ -575,7 +575,7 @@ Check:
 
 ## 17. Practical Exercises
 
-Exercise 1
+**Exercise 1**
 
 Change:
 
@@ -586,12 +586,12 @@ node:20-alpine
 to
 
 ```text
-node:18-alpine
+node:22-alpine
 ```
 
 Run again.
 
-Exercise 2
+**Exercise 2**
 
 Replace:
 
@@ -605,7 +605,7 @@ with:
 npm --version
 ```
 
-Exercise 3
+**Exercise 3**
 
 Run:
 
@@ -619,15 +619,14 @@ using sample Node application.
 
 ## 18. Interview Questions and Answers
 
-### Q1 What is Docker agent in Jenkins?
+**Q1 What is Docker agent in Jenkins?**
 
-Answer:
-
+**Answer:**
 Docker agent allows Jenkins to run pipelines inside temporary containers instead of static worker nodes.
 
-### Q2 Why use Docker agents?
+**Q2** Why use Docker agents?
 
-Answer:
+**Answer:**
 
 Benefits:
 
@@ -637,7 +636,9 @@ Benefits:
 * Ephemeral containers
 * Easier upgrades
 
-### Q3 Difference between Jenkins worker and Docker agent?
+**Q3** Difference between Jenkins worker and Docker agent?
+
+**Answer:**
 
 Worker Node:
 
@@ -657,18 +658,18 @@ Answer:
 
 Lightweight Node image for fast builds.
 
-### Q5 What does docker ps verify?
+**Q5.** What does docker ps verify?
 
-Answer:
-
+**Answer:**
 Confirms whether pipeline containers are running.
 
 In this case:
 
 No running container proves auto-cleanup.
 
-### Q6 What does this pipeline validate?
+**Q6.** What does this pipeline validate?
 
+**Answer:**
 It validates:
 
 * Jenkins
