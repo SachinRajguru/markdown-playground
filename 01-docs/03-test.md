@@ -1,12 +1,10 @@
-# 01-my-first-pipeline
+# 📄 `01-my-first-pipeline`
 
-# Jenkins First Pipeline
+## Jenkins First Pipeline
 
-## Study Guide + Practical Guide + Lab Guide + Technical Guide
+Study Guide + Practical Guide + Lab Guide + Technical Guide
 
----
-
-## Table of Contents
+### Table of Contents
 
 - [1. Introduction](#1-introduction)
 - [2. Objective of This Project](#2-objective-of-this-project)
@@ -29,9 +27,7 @@
 - [19. Interview Questions and Answers](#19-interview-questions-and-answers)
 - [20. Key Takeaways](#20-key-takeaways)
 
----
-
-# 1. Introduction
+## 1. Introduction
 
 This project is the **first practical Jenkins pipeline** used to validate whether:
 
@@ -50,7 +46,7 @@ Think of it as a “Hello World” for Jenkins + Docker agents.
 
 ---
 
-# 2. Objective of This Project
+## 2. Objective of This Project
 
 The goal is simple:
 
@@ -75,11 +71,9 @@ If Node version is returned successfully:
 * Docker permissions are correct
 * Plugin configuration is correct
 
----
+## 3. Project Architecture
 
-# 3. Project Architecture
-
-## Flow
+### Flow
 
 ```text
 Developer
@@ -108,9 +102,7 @@ Job Completes
 Container Deleted Automatically
 ```
 
----
-
-## Analogy
+### Analogy
 
 Imagine booking a taxi:
 
@@ -132,7 +124,7 @@ That is exactly how Docker agents behave.
 
 ---
 
-# 4. Why This Pipeline Matters
+## 4. Why This Pipeline Matters
 
 Before building:
 
@@ -150,20 +142,18 @@ This project is that verification step.
 
 ---
 
-# 5. Prerequisites
+## 5. Prerequisites
 
 You should have:
 
-## Infrastructure
+### Infrastructure
 
 * Ubuntu EC2 Instance
 * Jenkins installed
 * Docker installed
 * Port 8080 open
 
----
-
-## Jenkins Configuration
+### Jenkins Configuration
 
 Installed:
 
@@ -198,7 +188,7 @@ You are ready.
 
 ---
 
-# 6. Project Structure
+## 6. Project Structure
 
 ```text
 01-my-first-pipeline/
@@ -208,9 +198,9 @@ You are ready.
 
 ---
 
-# 7. Jenkinsfile Walkthrough
+## 7. Jenkinsfile Walkthrough
 
-## Jenkinsfile
+### Jenkinsfile
 
 ```groovy
 pipeline {
@@ -218,7 +208,7 @@ pipeline {
  agent {
 
    docker {
-      image 'node:16-alpine'
+      image 'node:20-alpine'
    }
 
  }
@@ -242,24 +232,20 @@ pipeline {
 
 ---
 
-# 8. Understanding the Pipeline Components
+## 8. Understanding the Pipeline Components
 
----
-
-## pipeline {}
+### pipeline {}
 
 Defines entire Jenkins pipeline.
 
 Think of this as the skeleton.
 
----
-
-## agent
+### agent
 
 ```groovy
 agent {
  docker {
-   image 'node:16-alpine'
+   image 'node:20-alpine'
  }
 }
 ```
@@ -273,21 +259,17 @@ Create Docker container.
 Use:
 
 ```text
-node:16-alpine
+node:20-alpine
 ```
 
----
-
-## Why node:16-alpine?
+### Why node:20-alpine?
 
 * Small image
 * Lightweight
 * Fast pull
 * Includes Node installed
 
----
-
-## stages
+### stages
 
 ```groovy
 stages {
@@ -299,9 +281,7 @@ Stages = logical phases.
 
 This pipeline has only one.
 
----
-
-## stage
+### stage
 
 ```groovy
 stage('Test')
@@ -313,9 +293,7 @@ Purpose:
 
 Verify Node exists inside container.
 
----
-
-## steps
+### steps
 
 ```groovy
 steps {
@@ -327,11 +305,9 @@ Commands executed.
 
 ---
 
-# 9. Lab Setup Steps
+## 9. Lab Setup Steps
 
----
-
-## Step 1
+### Step 1
 
 Go to Jenkins:
 
@@ -339,15 +315,11 @@ Go to Jenkins:
 http://your-server:8080
 ```
 
----
-
-## Step 2
+### Step 2
 
 Create New Item
 
----
-
-## Step 3
+### Step 3
 
 Select:
 
@@ -361,9 +333,7 @@ Name:
 first-jenkins-job
 ```
 
----
-
-## Step 4
+### Step 4
 
 Choose:
 
@@ -371,9 +341,7 @@ Choose:
 Pipeline script from SCM
 ```
 
----
-
-## Step 5
+### Step 5
 
 Repository:
 
@@ -397,7 +365,7 @@ Save.
 
 ---
 
-# 10. Execute Pipeline
+## 10. Execute Pipeline
 
 Click:
 
@@ -407,12 +375,12 @@ Build Now
 
 ---
 
-# 11. Expected Build Flow
+## 11. Expected Build Flow
 
 Jenkins console output should show:
 
 * Checkout from GitHub
-* Pull node:16-alpine
+* Pull node:20-alpine
 * Create Docker container
 * Run:
 
@@ -434,7 +402,7 @@ Finished: SUCCESS
 
 ---
 
-# 12. Validate Docker Agent Behavior
+## 12. Validate Docker Agent Behavior
 
 SSH into server.
 
@@ -450,8 +418,6 @@ Expected:
 No containers running
 ```
 
----
-
 Check:
 
 ```bash
@@ -466,9 +432,9 @@ That is expected.
 
 ---
 
-# 13. How Container Lifecycle Works
+## 13. How Container Lifecycle Works
 
-## During Job
+### During Job
 
 Container exists.
 
@@ -478,9 +444,7 @@ Pipeline Runs
 Container Deleted
 ```
 
----
-
-## Temporary (Ephemeral) Agent
+### Temporary (Ephemeral) Agent
 
 This is called:
 
@@ -492,11 +456,9 @@ Destroyed after use.
 
 ---
 
-# 14. Why Docker Agents Are Better Than Worker Nodes
+## 14. Why Docker Agents Are Better Than Worker Nodes
 
----
-
-## Traditional Worker Node Problem
+### Traditional Worker Node Problem
 
 Suppose worker node has:
 
@@ -512,14 +474,12 @@ Another team wants:
 
 Conflict.
 
----
-
-## Docker Solves This
+### Docker Solves This
 
 Today:
 
 ```text
-node:16-alpine
+node:20-alpine
 ```
 
 Tomorrow:
@@ -538,7 +498,7 @@ No server maintenance.
 
 ---
 
-# 15. Real-World Use Cases
+## 15. Real-World Use Cases
 
 This same pattern is used for:
 
@@ -570,11 +530,9 @@ Same structure.
 
 ---
 
-# 16. Common Issues
+## 16. Common Issues
 
----
-
-## Error
+### Error
 
 ```text
 permission denied docker.sock
@@ -589,9 +547,7 @@ sudo systemctl restart docker
 
 Restart Jenkins.
 
----
-
-## Error
+### Error
 
 ```text
 docker not found
@@ -603,9 +559,7 @@ Install Docker.
 sudo apt install docker.io -y
 ```
 
----
-
-## Error
+### Error
 
 ```text
 Cannot pull image
@@ -619,14 +573,14 @@ Check:
 
 ---
 
-# 17. Practical Exercises
+## 17. Practical Exercises
 
 Exercise 1
 
 Change:
 
 ```text
-node:16-alpine
+node:20-alpine
 ```
 
 to
@@ -636,8 +590,6 @@ node:18-alpine
 ```
 
 Run again.
-
----
 
 Exercise 2
 
@@ -653,8 +605,6 @@ with:
 npm --version
 ```
 
----
-
 Exercise 3
 
 Run:
@@ -667,19 +617,15 @@ using sample Node application.
 
 ---
 
-# 18. Interview Questions and Answers
+## 18. Interview Questions and Answers
 
----
-
-## Q1 What is Docker agent in Jenkins?
+### Q1 What is Docker agent in Jenkins?
 
 Answer:
 
 Docker agent allows Jenkins to run pipelines inside temporary containers instead of static worker nodes.
 
----
-
-## Q2 Why use Docker agents?
+### Q2 Why use Docker agents?
 
 Answer:
 
@@ -691,9 +637,7 @@ Benefits:
 * Ephemeral containers
 * Easier upgrades
 
----
-
-## Q3 Difference between Jenkins worker and Docker agent?
+### Q3 Difference between Jenkins worker and Docker agent?
 
 Worker Node:
 
@@ -707,17 +651,13 @@ Docker Agent:
 * Created on demand
 * Destroyed after execution
 
----
-
-## Q4 Why use node:16-alpine?
+### Q4 Why use node:20-alpine?
 
 Answer:
 
 Lightweight Node image for fast builds.
 
----
-
-## Q5 What does docker ps verify?
+### Q5 What does docker ps verify?
 
 Answer:
 
@@ -727,9 +667,7 @@ In this case:
 
 No running container proves auto-cleanup.
 
----
-
-## Q6 What does this pipeline validate?
+### Q6 What does this pipeline validate?
 
 It validates:
 
@@ -739,9 +677,7 @@ It validates:
 * Permissions
 * Agent configuration
 
----
-
-# 19. Key Takeaways
+## 19. Key Takeaways
 
 This project proves:
 
@@ -758,9 +694,7 @@ This is the foundation for:
 * Full CI/CD
 * Kubernetes deployments
 
----
-
-# 20. Next Project
+## 20. Next Project
 
 Next:
 
@@ -780,9 +714,7 @@ Multiple containers per stage.
 * Node container
 * Database container
 
----
-
-## Run This Pipeline
+### Run This Pipeline
 
 ```bash
 git clone <repo>
