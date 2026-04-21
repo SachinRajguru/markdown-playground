@@ -6,26 +6,26 @@ Study Guide + Practical Guide + Lab Guide + Technical Guide
 
 ### Table of Contents
 
-- [1. Introduction](#1-introduction)
-- [2. Objective of This Project](#2-objective-of-this-project)
-- [3. Project Architecture](#3-project-architecture)
-- [4. Why This Pipeline Matters](#4-why-this-pipeline-matters)
-- [5. Prerequisites](#5-prerequisites)
-- [6. Project Structure](#6-project-structure)
-- [7. Jenkinsfile Walkthrough](#7-jenkinsfile-walkthrough)
-- [8. Understanding the Pipeline Components](#8-understanding-the-pipeline-components)
-- [9. Lab Setup Steps](#9-lab-setup-steps)
-- [10. Configure Pipeline in Jenkins](#10-configure-pipeline-in-jenkins)
-- [11. Execute the Pipeline](#11-execute-the-pipeline)
-- [12. Expected Build Flow](#12-expected-build-flow)
-- [13. Validate Docker Agent Behavior](#13-validate-docker-agent-behavior)
-- [14. How Container Lifecycle Works](#14-how-container-lifecycle-works)
-- [15. Why Docker Agents Are Better Than Static Worker Nodes](#15-why-docker-agents-are-better-than-static-worker-nodes)
-- [16. Real-World Use Cases](#16-real-world-use-cases)
-- [17. Common Issues and Troubleshooting](#17-common-issues-and-troubleshooting)
-- [18. Practical Exercises](#18-practical-exercises)
-- [19. Interview Questions and Answers](#19-interview-questions-and-answers)
-- [20. Key Takeaways](#20-key-takeaways)
+1. [Introduction](#1-introduction)
+2. [Objective of This Project](#2-objective-of-this-project)
+3. [Project Architecture](#3-project-architecture)
+4. [Why This Pipeline Matters](#4-why-this-pipeline-matters)
+5. [Prerequisites](#5-prerequisites)
+6. [Project Structure](#6-project-structure)
+7. [Jenkinsfile Walkthrough](#7-jenkinsfile-walkthrough)
+8. [Understanding the Pipeline Components](#8-understanding-the-pipeline-components)
+9. [Lab Setup Steps](#9-lab-setup-steps)
+10. [Configure Pipeline in Jenkins](#10-configure-pipeline-in-jenkins)
+11. [Execute the Pipeline](#11-execute-the-pipeline)
+12. [Expected Build Flow](#12-expected-build-flow)
+13. [Validate Docker Agent Behavior](#13-validate-docker-agent-behavior)
+14. [How Container Lifecycle Works](#14-how-container-lifecycle-works)
+15. [Why Docker Agents Are Better Than Static Worker Nodes](#15-why-docker-agents-are-better-than-static-worker-nodes)
+16. [Real-World Use Cases](#16-real-world-use-cases)
+17. [Common Issues and Troubleshooting](#17-common-issues-and-troubleshooting)
+18. [Practical Exercises](#18-practical-exercises)
+19. [Interview Questions and Answers](#19-interview-questions-and-answers)
+20. [Key Takeaways](#20-key-takeaways)
 
 ---
 
@@ -364,6 +364,8 @@ main
 ```
 
 - **Save**.
+
+---
 
 ## 10. Execute Pipeline
 
@@ -742,3 +744,5 @@ docker ps
 ```
 
 You have successfully implemented your first Jenkins pipeline using Docker as agent.
+
+---
