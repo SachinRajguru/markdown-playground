@@ -108,6 +108,7 @@ CD automates deployment and delivery
 - Customer is in another country 🌍
 
 **❓ Problem**: 
+
 `How does code reach customer reliably?`
 
 ### ➤ Required Steps (Standard Flow)
@@ -124,6 +125,7 @@ Every organization follows these core steps:
     - Web apps
     - Mobile apps
     - Government/secure apps
+
 ➤ **But core pipeline always exists**
 
 ### ✅ Solution
@@ -181,7 +183,8 @@ def test_add():
 
 **Concept**:
 ```python
-Testing only: add(2,3) → 5 ✅
+Testing only: 
+add(2,3) → 5 ✅
 ```
 
 **⚠️ Why automate?**

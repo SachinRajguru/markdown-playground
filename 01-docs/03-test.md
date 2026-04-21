@@ -15,17 +15,17 @@ Study Guide + Practical Guide + Lab Guide + Technical Guide
 7. [Jenkinsfile Walkthrough](#7-jenkinsfile-walkthrough)
 8. [Understanding the Pipeline Components](#8-understanding-the-pipeline-components)
 9. [Lab Setup Steps](#9-lab-setup-steps)
-10. [Configure Pipeline in Jenkins](#configure-pipeline-in-jenkins)
-11. [Execute the Pipeline](#execute-the-pipeline)
-12. [Expected Build Flow](#expected-build-flow)
-13. [Validate Docker Agent Behavior](#validate-docker-agent-behavior)
-14. [How Container Lifecycle Works](#how-container-lifecycle-works)
-15. [Why Docker Agents Are Better Than Static Worker Nodes](#why-docker-agents-are-better-than-static-worker-nodes)
-16. [Real-World Use Cases](#real-world-use-cases)
-17. [Common Issues and Troubleshooting](#common-issues-and-troubleshooting)
-18. [Practical Exercises](#practical-exercises)
-19. [Interview Questions and Answers](#interview-questions-and-answers)
-20. [Key Takeaways](#key-takeaways)
+10. [Execute the Pipeline](#10-execute-the-pipeline)
+11. [Expected Build Flow](#11-expected-build-flow)
+12. [Validate Docker Agent Behavior](#12-validate-docker-agent-behavior)
+13. [How Container Lifecycle Works](#13-how-container-lifecycle-works)
+14. [Why Docker Agents Are Better Than Static Worker Nodes](#14-why-docker-agents-are-better-than-static-worker-nodes)
+15. [Real-World Use Cases](#15-real-world-use-cases)
+16. [Common Issues and Troubleshooting](#16-common-issues-and-troubleshooting)
+17. [Practical Exercises](#17-practical-exercises)
+18. [Interview Questions and Answers](#18-interview-questions-and-answers)
+19. [Key Takeaways](#19-key-takeaways)
+20. [Next Project](#20-next-project)
 
 ---
 
@@ -44,7 +44,7 @@ This is not intended to be a full CI/CD pipeline.
 
 It is a **verification pipeline**.
 
-Think of it as a “Hello World” for Jenkins + Docker agents.
+Think of it as a “Hello World” for `Jenkins + Docker agents`.
 
 ---
 
@@ -207,27 +207,32 @@ You are ready.
 ```groovy
 pipeline {
 
- agent {
+    // Defines where this pipeline will run
+    agent {
 
-   docker {
-      image 'node:20-alpine'
-   }
+        // Use a Docker-based ephemeral agent
+        docker {
 
- }
+            // Pull Node 20 lightweight Alpine image
+            image 'node:20-alpine'
+        }
+    }
 
- stages {
+    // Defines pipeline stages
+    stages {
 
-   stage('Test') {
+        // Single test stage
+        stage('Test') {
 
-      steps {
+            steps {
 
-         sh 'node --version'
+                // Run command inside container
+                // Verifies Node is installed and agent works
+                sh 'node --version'
 
-      }
-
-   }
-
- }
+            }
+        }
+    }
 
 }
 ```
@@ -534,7 +539,7 @@ Same structure.
 
 ---
 
-## 16. Common Issues
+## 16. Common Issues and Troubleshooting
 
 ### Error
 
@@ -626,64 +631,70 @@ using sample Node application.
 **Q1 What is Docker agent in Jenkins?**
 
 **Answer:**
-
+```text
 Docker agent allows Jenkins to run pipelines inside temporary containers instead of static worker nodes.
+```
 
 **Q2 Why use Docker agents?**
 
 **Answer:**
-
+```text
 Benefits:
 
-* Dependency isolation
-* No package conflicts
-* Lower cost
-* Ephemeral containers
-* Easier upgrades
+• Dependency isolation
+• No package conflicts
+• Lower cost
+• Ephemeral containers
+• Easier upgrades
+```
 
 **Q3 Difference between Jenkins worker and Docker agent?**
 
 **Answer:**
-
+```text
 Worker Node:
 
-* Long-running machine
-* Requires maintenance
-* Persistent
+• Long-running machine
+• Requires maintenance
+• Persistent
 
 Docker Agent:
 
-* Temporary container
-* Created on demand
-* Destroyed after execution
+• Temporary container
+• Created on demand
+• Destroyed after execution
+```
 
 **Q4 Why use node:20-alpine?**
 
 **Answer:**
-
+```text
 Lightweight Node image for fast builds.
+```
 
 **Q5. What does `docker ps` verify?**
 
 **Answer:**
-
+```text
 Confirms whether pipeline containers are running.
 
 In this case:
 
 No running container proves auto-cleanup.
+```
 
-**Q6.** What does this pipeline validate?
+**Q6. What does this pipeline validate?**
 
 **Answer:**
-
+```text
 It validates:
 
-* Jenkins
-* Docker
-* Plugin
-* Permissions
-* Agent configuration
+• Jenkins
+• Docker
+• Plugin
+• Permissions
+• Agent configuration
+```
 
 ---
 
