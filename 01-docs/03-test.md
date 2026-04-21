@@ -242,7 +242,7 @@ Defines entire Jenkins pipeline.
 
 Think of this as the skeleton.
 
-### agent
+### `agent`
 
 ```groovy
 agent {
@@ -258,7 +258,7 @@ Do not run on Jenkins host.
 
 Create Docker container.
 
-Use:
+**Use:**
 
 ```text
 node:20-alpine
@@ -291,7 +291,7 @@ stage('Test')
 
 Test stage.
 
-Purpose:
+**Purpose:**
 
 Verify Node exists inside container.
 
@@ -363,7 +363,7 @@ main
 01-my-first-pipeline/Jenkinsfile
 ```
 
-**Save**.
+- **Save**.
 
 ## 10. Execute Pipeline
 
@@ -391,7 +391,7 @@ node --version
 Example:
 
 ```text
-v16.x.x
+v20.x.x
 ```
 
 Then:
@@ -406,7 +406,7 @@ Finished: SUCCESS
 
 SSH into server.
 
-Check:
+- Check:
 
 ```bash
 docker ps
@@ -418,7 +418,7 @@ Expected:
 No containers running
 ```
 
-Check:
+- Check:
 
 ```bash
 docker ps -a
@@ -462,14 +462,14 @@ Destroyed after use.
 
 Suppose worker node has:
 
-* Node 14
-  n- Python 2
-* Java 8
+* Node 18
+* Python 3.9
+* Java 11
 
 Another team wants:
 
-* Node 16
-* Python 3
+* Node 20
+* Python 3.12
 * Java 17
 
 Conflict.
@@ -479,18 +479,20 @@ Conflict.
 Today:
 
 ```text
-node:20-alpine
+node:18-alpine
 ```
 
 Tomorrow:
 
 ```text
-node:17-alpine
+node:20-alpine
 ```
 
 Change:
 
+```text
 Two characters.
+```
 
 Done.
 
@@ -575,7 +577,7 @@ Check:
 
 ## 17. Practical Exercises
 
-**Exercise 1**
+### Exercise 1
 
 Change:
 
@@ -591,7 +593,7 @@ node:22-alpine
 
 Run again.
 
-**Exercise 2**
+### Exercise 2
 
 Replace:
 
@@ -605,7 +607,7 @@ with:
 npm --version
 ```
 
-**Exercise 3**
+### Exercise 3
 
 Run:
 
@@ -622,9 +624,10 @@ using sample Node application.
 **Q1 What is Docker agent in Jenkins?**
 
 **Answer:**
+
 Docker agent allows Jenkins to run pipelines inside temporary containers instead of static worker nodes.
 
-**Q2** Why use Docker agents?
+**Q2 Why use Docker agents?**
 
 **Answer:**
 
@@ -636,7 +639,7 @@ Benefits:
 * Ephemeral containers
 * Easier upgrades
 
-**Q3** Difference between Jenkins worker and Docker agent?
+**Q3 Difference between Jenkins worker and Docker agent?**
 
 **Answer:**
 
@@ -652,15 +655,16 @@ Docker Agent:
 * Created on demand
 * Destroyed after execution
 
-### Q4 Why use node:20-alpine?
+**Q4 Why use node:20-alpine?**
 
-Answer:
+**Answer:**
 
 Lightweight Node image for fast builds.
 
-**Q5.** What does docker ps verify?
+**Q5. What does `docker ps` verify?**
 
 **Answer:**
+
 Confirms whether pipeline containers are running.
 
 In this case:
@@ -670,6 +674,7 @@ No running container proves auto-cleanup.
 **Q6.** What does this pipeline validate?
 
 **Answer:**
+
 It validates:
 
 * Jenkins
@@ -677,6 +682,8 @@ It validates:
 * Plugin
 * Permissions
 * Agent configuration
+
+---
 
 ## 19. Key Takeaways
 
@@ -695,6 +702,8 @@ This is the foundation for:
 * Full CI/CD
 * Kubernetes deployments
 
+---
+
 ## 20. Next Project
 
 Next:
@@ -705,11 +714,7 @@ Next:
 
 Where we extend:
 
-One container
-
-into
-
-Multiple containers per stage.
+One container into Multiple containers per stage.
 
 * Maven container
 * Node container
@@ -737,5 +742,3 @@ docker ps
 ```
 
 You have successfully implemented your first Jenkins pipeline using Docker as agent.
-
----
