@@ -272,10 +272,10 @@ Login → Action → Logout
 
 **Example Comparison**:
 
-| Test Type     | Example Flow                            |
-|---------------|-----------------------------------------|
-| **Unit Test** | `add(2,3)=5` ✅                        |
-| **E2E Test**  | `Login → Calculator → Add → Logout` ✅ |
+| Test Type | Example Flow                            |
+|-----------|-----------------------------------------|
+| Unit Test | `add(2,3)=5` ✅                        |
+| E2E Test  | `Login → Calculator → Add → Logout` ✅ |
 
 **Concept**:
 ```bash

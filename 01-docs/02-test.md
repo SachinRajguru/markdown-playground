@@ -38,8 +38,8 @@ CI/CD bridges the gap between code written by developers and software delivered 
 
 CI/CD stands for:
 ```bash
-- CI → Continuous Integration
-- CD → Continuous Delivery / Continuous Deployment
+CI → Continuous Integration
+CD → Continuous Delivery / Continuous Deployment
 ```
 
 ### Continuous Integration (CI)
@@ -79,10 +79,10 @@ After code is tested → it is deployed to servers where users can access it.
 
 ### CI vs CD (Core Difference)
 
-| Phase   | Description            | Purpose             |
-|---------|------------------------|---------------------|
-| **CI**  | Build + Test + Scan    | Ensure code quality |
-| **CD**  | Deploy to environments | Deliver to users    |
+| Phase | Description            | Purpose             |
+|-------|------------------------|---------------------|
+| CI    | Build + Test + Scan    | Ensure code quality |
+| CD    | Deploy to environments | Deliver to users    |
 
 **Simple Formula**:
 ```bash
@@ -97,38 +97,38 @@ CD = Food is served to customer tables (reliable delivery)
 ```
 
 **Textbook Summary**
-- **CI** automates testing and validation
-- **CD** automates deployment and delivery
+```bash
+CI automates testing and validation
+CD automates deployment and delivery
+```
 
 ### 🌍 Real-World Scenario
 **Situation**:
 - Developer builds app on laptop 💻
 - Customer is in another country 🌍
 
-**❓ Problem**: How does code reach customer reliably?
+**❓ Problem**: 
+`How does code reach customer reliably?`
 
 ### ➤ Required Steps (Standard Flow)
 Every organization follows these core steps:
-```bash
-1. Unit Testing ✓
-2. Static Code Analysis ✓
-3. Code Quality & Security Scan ✓
-4. Automation / E2E Testing ✓
-5. Reporting ✓
-6. Deployment ✓
-```
+1. Unit Testing 
+2. Static Code Analysis 
+3. Code Quality & Security Scan 
+4. Automation / E2E Testing 
+5. Reporting 
+6. Deployment 
 
 **⚠️ Important Insight**
-Steps vary by application type:
-- Web apps
-- Mobile apps
-- Government/secure apps
-
-**But core pipeline always exists**
+- Steps vary by application type:
+    - Web apps
+    - Mobile apps
+    - Government/secure apps
+➤ **But core pipeline always exists**
 
 ### ✅ Solution
 ```bash
-➤ Automate everything using CI/CD
+Automate everything using CI/CD
 CI/CD = Automation of entire delivery pipeline
 ```
 ### ⚠️ Why Automation?
@@ -200,7 +200,7 @@ Write 3 unit tests for a `multiply(a,b)` function.
 
 ### 4.2 Static Code Analysis
 
-**Definition**: 
+**Definition**:
 Checking code without running it.
 
 **What it checks**:
@@ -295,10 +295,10 @@ Testing entire application flow
 
 **Example Comparison**
 
-| Test Type     | Example Flow                            |
-|---------------|--------------------------------------- -|
-| **Unit Test** | `add(2,3)=5` ✅                        |
-| **E2E Test**  | `Login → Calculator → Add → Logout` ✅ |
+| Test Type | Example Flow                            |
+|-----------|-----------------------------------------|
+| Unit Test | `add(2,3)=5` ✅                        |
+| E2E Test  | `Login → Calculator → Add → Logout` ✅ |
 
 **Concept**:
 ```bash
@@ -1098,8 +1098,8 @@ Dynamic, On-Demand Systems (Cloud CI/CD) ⚡
 
 **Remember**: 
 ```bash
-- Legacy = Office always open 💰
-- Modern = Uber - pay per ride 🚗
+Legacy = Office always open 💰
+Modern = Uber - pay per ride 🚗
 ```
 
 ---
