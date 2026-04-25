@@ -252,7 +252,7 @@ exit
 # Copy Container ID from Docker Desktop
 docker stop <container-id>
 # OR use name
-docker stop festive_fermi
+docker stop <container-name>
 ```
 
 **Status Check**:
@@ -457,47 +457,70 @@ root@abc123:/# SHOW DATABASES;
 
 **test-app/server.js** (provided code):
 ```javascript
-const express = require("express");
-const app = express();
-const path = require("path");
-const MongoClient = require("mongodb").MongoClient;
+const express = require("express");        // Import Express framework
+const app = express();                     // Create Express app
+const path = require("path");              // Import path module for file paths
+const MongoClient = require("mongodb").MongoClient;  // Import MongoDB client
 
-const PORT = 5050;
+const PORT = 5050;                         // Server port number
+
+// Middleware to parse form data from HTML forms
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files (CSS, HTML, images) from 'public' folder
 app.use(express.static("public"));
 
-const MONGO_URL = "mongodb://admin:qwerty@localhost:27017";
-const client = new MongoClient(MONGO_URL);
+// MongoDB connection string - connects to MongoDB container
+const MONGO_URL = "mongodb://admin:qwerty@localhost:27017";  // Use 'mongo' service name from docker-compose
+const client = new MongoClient(MONGO_URL);               // Create MongoDB client
 
-//GET all users
+// Serve homepage
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// GET all users - displays all users from database
 app.get("/getUsers", async (req, res) => {
-    await client.connect(URL);
-    console.log('Connected successfully to server');
+    try {
+        await client.connect();                    // Connect to MongoDB
+        console.log('Connected successfully to server');
 
-    const db = client.db("college-db");
-    const data = await db.collection('users').find({}).toArray();
-    
-    client.close();
-    res.send(data);
+        const db = client.db("college-db");        // Select 'college-db' database
+        const data = await db.collection('users').find({}).toArray();  // Get all users
+        
+        client.close();                            // Close connection
+        res.send(data);                            // Send users as JSON
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send("Database error");
+    }
 });
 
-//POST new user
+// POST new user - saves new user to database
 app.post("/addUser", async (req, res) => {
-    const userObj = req.body;
-    console.log(req.body);
-    await client.connect(URL);
-    console.log('Connected successfully to server');
+    try {
+        const userObj = req.body;                  // Get form data (email, username, password)
+        console.log("New user:", userObj);
+        
+        await client.connect();                    // Connect to MongoDB
+        console.log('Connected successfully to server');
 
-    const db = client.db("college-db");
-    const data = await db.collection('users').insertOne(userObj);
-    console.log(data);
-    console.log("data inserted in DB");
-    client.close();
+        const db = client.db("college-db");        // Select 'college-db' database
+        const data = await db.collection('users').insertOne(userObj);  // Insert new user
+        console.log("Inserted:", data);
+        console.log("✅ Data inserted in DB");
+        
+        client.close();                            // Close connection
+        res.send("User created successfully!");    // Send success response
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send("Failed to create user");
+    }
 });
 
-
+// Start server
 app.listen(PORT, () => {
-    console.log(`server running on port ${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
 ```
 
@@ -537,7 +560,7 @@ docker run -d \
 
 **Test**: 
 - localhost:8081 → Mongo Express UI (admin/pass: admin/qwerty)
-- localhost:5050/users → GET users
+- localhost:5050/getUsers → GET users
 - POST to /addUser → Creates data
 
 ### Interview Q&A
@@ -659,30 +682,30 @@ docker-compose -f mongodbs.yml logs
 
 1. **Create Repository**:
    - [hub.docker.com](https://hub.docker.com/) → New Repository
-   - Name: `devcollege/test-application`
+   - Name: `sachinrajguru/test-application`
    - Public ✓
 
 2. **Tag & Build**:
 ```bash
-docker build -t devcollege/test-application:1.0 .
+docker build -t sachinrajguru/test-application:1.0 .
 ```
 
 3. **Login**:
 ```bash
 docker login
-# Username: devcollege
+# Username: sachinrajguru
 # Password: or use browser auth
 ```
 
 4. **Push**:
 ```bash
-docker push devcollege/test-application:1.0
+docker push sachinrajguru/test-application:1.0
 ```
 
 5. **Pull from anywhere**:
 ```bash
-docker pull devcollege/test-application:1.0
-docker run devcollege/test-application:1.0
+docker pull sachinrajguru/test-application:1.0
+docker run sachinrajguru/test-application:1.0
 ```
 
 ### Interview Q&A
